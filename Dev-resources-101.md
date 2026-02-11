@@ -1,0 +1,99 @@
+# Canton Developer Resources
+
+This guide provides everything you need to build privacy-focused applications on Canton.
+
+## Getting Started
+
+### 1. DevNet Access Setup
+
+To access Canton DevNet during the hackathon, follow these steps:
+
+**Step 1: Install OpenVPN**
+- Open your favorite terminal
+- Enter the connection information that was emailed to you
+
+**Step 2: Verify Connection**
+```bash
+curl https://ifconfig.me
+```
+If it returns an IP address used to SSH, you are connected correctly.
+
+**Step 3: Use Canton DevNet**
+Once connected to the VPN:
+```bash
+cd ~/splice-node/docker-compose/validator
+COMPOSE_PROJECT_NAME=splice_dev1 docker compose up -d
+```
+
+### 2. Essential Resources
+
+- **Canton 101 Overview**: [canton-101.vercel.app](https://canton-101.vercel.app) for Network architecture, APIs, SDKs, and core concepts
+
+- **Official Documentation**: [docs.digitalasset.com](https://docs.digitalasset.com/build/3.4/)
+
+- **Canton Network APIs**: [API Overview](https://docs.digitalasset.com/build/3.4/overview/tldr.html#canton-network-apis)
+
+## Development Tools
+
+### Smart Contract Development
+
+- **DPM Framework**: [github.com/digital-asset/dpm](https://github.com/digital-asset/dpm)  
+  Framework for building and testing DAML applications
+  
+- **AI Code Generation**: [damlstudio.tenzro.network](https://damlstudio.tenzro.network/)  
+  AI-powered tool for generating DAML smart contracts
+
+### APIs & SDKs
+
+- **dApp Development Kit**: [splice-wallet-kernel](https://github.com/hyperledger-labs/splice-wallet-kernel/tree/main)
+  - [dApp API Spec](https://github.com/hyperledger-labs/splice-wallet-kernel/blob/main/api-specs/openrpc-dapp-api.json)
+  - [dApp SDK](https://github.com/hyperledger-labs/splice-wallet-kernel/tree/main/sdk/dapp-sdk)
+  - [Wallet Gateway](https://github.com/hyperledger-labs/splice-wallet-kernel/tree/main/wallet-gateway/remote)
+
+
+## Network
+
+### Block Explorers
+
+- **CCView Explorer**: [ccview.io](https://ccview.io/)
+- **Lighthouse Explorer**: [lighthouse.cantonloop.com](https://lighthouse.cantonloop.com/)
+
+### Indexing & Data
+
+- **CCView Indexing API**: [docs.ccview.io](https://docs.ccview.io/)
+
+## Wallet Integration
+
+### Console Wallet
+
+- **Website**: [consolewallet.io](https://consolewallet.io/)
+- **SDK**: [@console-wallet/dapp-sdk](https://www.npmjs.com/package/@console-wallet/dapp-sdk)
+- **Request Access Code**: [Apply Here](https://dhllqipiptx.typeform.com/to/sKaHBZfL)
+
+### Loop Wallet
+
+- **Website**: [cantonloop.com](https://cantonloop.com/)
+- **SDK Documentation**: [docs.fivenorth.io/loop-sdk/overview](https://docs.fivenorth.io/loop-sdk/overview/)
+- **Request Access Code**: Join [Discord #eth-denver](https://discord.com/invite/HMy2hQZySN) channel
+
+### Identity Verification
+
+- **Five North ID SDK**: [docs.fivenorth.io/id-sdk/introduction](https://docs.fivenorth.io/id-sdk/introduction/)
+
+## Community
+
+- **Discord**: Join #eth-denver channel at [discord.com/invite/HMy2hQZySN](https://discord.com/invite/HMy2hQZySN)
+
+## Additional Resources
+
+- **Canton Network Website**: [canton.network](https://www.canton.network/)
+
+- **Developer Resources**: [canton.network/developer-resources](https://www.canton.network/developer-resources)
+
+- **Ecosystem Apps**: [canton.network/ecosystem](https://www.canton.network/ecosystem)
+
+- **Quick Start Guide**: [github.com/digital-asset/cn-quickstart](https://github.com/digital-asset/cn-quickstart)
+
+- **Project Templates**: [create-canton-app](https://www.npmjs.com/package/create-canton-app)
+
+**Happy Building!**
