@@ -38,18 +38,6 @@ Canton Network is a **privacy-enabled blockchain platform** designed for institu
 
 ## Community
 
-- **Discord**: Join [#hackathon-support](https://discord.com/invite/HMy2hQZySN) for real-time assistance
-
-
-## Learning Path
-
-### Beginners
-1. Read [Canton 101](https://canton-101.vercel.app) for architecture overview
-2. Follow the [Quick Start Guide](https://github.com/digital-asset/cn-quickstart)
-
-### Intermediate
-1. Deep dive into [DAML documentation](https://docs.digitalasset.com/build/3.4/)
-2. Study [DPM framework](https://github.com/digital-asset/dpm) for testing
-
+- **Discord**: Join [#eth-denver-hackathon](https://discord.com/invite/HMy2hQZySN) for DevRel assistance
 
 **Ready to build the future of private applications?** 

@@ -29,7 +29,7 @@ COMPOSE_PROJECT_NAME=splice_dev1 docker compose up -d
 
 - **Canton 101 Overview**: [canton-101.vercel.app](https://canton-101.vercel.app) for Network architecture, APIs, SDKs, and core concepts
 
-- **Official Documentation**: [docs.digitalasset.com](https://docs.digitalasset.com/build/3.4/)
+- **Official Documentation**: [https://docs.canton.network](https://docs.canton.network/) (*Password: ethdenver*)
 
 - **Canton Network APIs**: [API Overview](https://docs.digitalasset.com/build/3.4/overview/tldr.html#canton-network-apis)
 
