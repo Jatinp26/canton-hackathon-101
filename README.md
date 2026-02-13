@@ -38,6 +38,6 @@ Canton Network is a **privacy-enabled blockchain platform** designed for institu
 
 ## Community
 
-- **Discord**: Join [#eth-denver-hackathon](https://discord.com/invite/HMy2hQZySN) for DevRel assistance
+- **Discord**: Join [#canton-ethdenver-hackathon](https://discord.gg/zuzEvGwtnz) for DevRel assistance
 
 **Ready to build the future of private applications?** 

@@ -82,7 +82,7 @@ COMPOSE_PROJECT_NAME=splice_dev1 docker compose up -d
 
 ## Community
 
-- **Discord**: Join #eth-denver channel at [discord.com/invite/HMy2hQZySN](https://discord.com/invite/HMy2hQZySN)
+- **Discord**: Join #canton-ethdenver-hackathon channel at [discord.gg/zuzEvGwtnz](https://discord.gg/zuzEvGwtnz)
 
 ## Additional Resources
 
