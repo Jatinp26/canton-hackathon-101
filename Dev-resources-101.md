@@ -27,7 +27,8 @@ COMPOSE_PROJECT_NAME=splice_dev1 docker compose up -d
 
 ### 2. Essential Resources
 
-- **Canton 101 Overview**: [canton-101.vercel.app](https://canton-101.vercel.app) for Network architecture, APIs, SDKs, and core concepts
+- **Canton 101 Overview**: [canton-101.vercel.app](https://canton-101.vercel.app) for Network architecture, APIs, SDKs, and core concepts:![Community](https://img.shields.io/badge/Community-D5A5E3)
+
 
 - **Official Documentation**: [https://docs.canton.network](https://docs.canton.network/) (*Password: ethdenver*)
 
@@ -41,7 +42,8 @@ COMPOSE_PROJECT_NAME=splice_dev1 docker compose up -d
   Framework for building and testing DAML applications
   
 - **AI Code Generation**: [damlstudio.tenzro.network](https://damlstudio.tenzro.network/)  
-  AI-powered tool for generating DAML smart contracts
+  AI-powered tool for generating DAML smart contracts: ![Community](https://img.shields.io/badge/Community-D5A5E3)
+
 
 ### APIs & SDKs
 
@@ -51,11 +53,13 @@ COMPOSE_PROJECT_NAME=splice_dev1 docker compose up -d
   - [Wallet Gateway](https://github.com/hyperledger-labs/splice-wallet-kernel/tree/main/wallet-gateway/remote)
 
 
-## Network
+## Network 
 
-### Block Explorers
+![Community](https://img.shields.io/badge/Community-D5A5E3)
 
-- **CCView Explorer**: [ccview.io](https://ccview.io/)
+### Block Explorers 
+
+- **CCView Explorer**: [ccview.io](https://ccview.io/): 
 - **Lighthouse Explorer**: [lighthouse.cantonloop.com](https://lighthouse.cantonloop.com/)
 
 ### Indexing & Data
@@ -63,6 +67,7 @@ COMPOSE_PROJECT_NAME=splice_dev1 docker compose up -d
 - **CCView Indexing API**: [docs.ccview.io](https://docs.ccview.io/)
 
 ## Wallet Integration
+![Community](https://img.shields.io/badge/Community-D5A5E3)
 
 ### Console Wallet
 
@@ -93,7 +98,5 @@ COMPOSE_PROJECT_NAME=splice_dev1 docker compose up -d
 - **Ecosystem Apps**: [canton.network/ecosystem](https://www.canton.network/ecosystem)
 
 - **Quick Start Guide**: [github.com/digital-asset/cn-quickstart](https://github.com/digital-asset/cn-quickstart)
-
-- **Project Templates**: [create-canton-app](https://www.npmjs.com/package/create-canton-app)
 
 **Happy Building!**
