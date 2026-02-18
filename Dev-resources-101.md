@@ -19,6 +19,26 @@ curl https://ifconfig.me
 If it returns an IP address used to SSH, you are connected correctly.
 
 **Step 3: Use Canton DevNet**
+
+`ssh dev<NUMBER>@<IP>`
+
+- Devnet1: 34.173.195.33
+- DevNet2: 34.121.184.157
+- Devnet3: 35.193.163.216 
+- DevNet4: 34.57.100.252
+- Devnet5: 136.112.241.18
+
+dev1 → CantonDev1!
+dev2 → CantonDev2!
+dev3 → CantonDev3!
+dev4 → CantonDev4!
+dev5 → CantonDev5!
+dev6 → CantonDev6!
+dev7 → CantonDev7!
+dev8 → CantonDev8!
+dev9 → CantonDev9!
+dev10 → CantonDev10!
+
 Once connected to the VPN:
 ```bash
 cd ~/splice-node/docker-compose/validator
