@@ -29,14 +29,23 @@ If it returns an IP address used to SSH, you are connected correctly.
 - Devnet5: 136.112.241.18
 
 dev1 → CantonDev1!
+
 dev2 → CantonDev2!
+  
 dev3 → CantonDev3!
+  
 dev4 → CantonDev4!
+  
 dev5 → CantonDev5!
+  
 dev6 → CantonDev6!
+  
 dev7 → CantonDev7!
+  
 dev8 → CantonDev8!
+  
 dev9 → CantonDev9!
+  
 dev10 → CantonDev10!
 
 Once connected to the VPN:
