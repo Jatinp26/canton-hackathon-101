@@ -8,17 +8,7 @@ This guide provides everything you need to build privacy-focused applications on
 
 To access Canton DevNet during the hackathon, follow these steps:
 
-**Step 1: Install OpenVPN**
-- Open your favorite terminal
-- Enter the connection information that was emailed to you
-
-**Step 2: Verify Connection**
-```bash
-curl https://ifconfig.me
-```
-If it returns an IP address used to SSH, you are connected correctly.
-
-**Step 3: Use Canton DevNet**
+**Step 1: Use Canton DevNet**
 
 `ssh dev<NUMBER>@<IP>`
 
@@ -48,11 +38,26 @@ dev9 → CantonDev9!
   
 dev10 → CantonDev10!
 
-Once connected to the VPN:
+Once connected to the right IP, Use below commands:
+
 ```bash
 cd ~/splice-node/docker-compose/validator
-COMPOSE_PROJECT_NAME=splice_dev1 docker compose up -d
+export IMAGE_TAG=0.5.10
+COMPOSE_PROJECT_NAME=splice_dev<NUMBER> docker compose up -d
 ```
+
+**Note**: 
+
+- Generate ONBOARDING_SECRET from https://docs.sync.global/validator_operator/validator_compose.html#required-network-parameters 
+
+- for `SPONSOR_SV_URL` use https://scan.sv-1.dev.global.canton.network.sync.global
+
+**Step 2: Verify Connection**
+
+```bash
+curl https://ifconfig.me
+```
+If it returns an IP address used to SSH, you are connected correctly.
 
 ### 2. Essential Resources
 
