@@ -6,7 +6,16 @@ This guide provides everything you need to build privacy-focused applications on
 
 ### 1. DevNet Access Setup
 
-To access Canton DevNet during the hackathon, follow these steps:
+**Why SSH into DevNet?**
+During the hackathon, each team is given access to a preconfigured Canton environment.
+
+You SSH into DevNet because the DevNet machines are already:
+
+- Whitelisted by the Super Validators, so they can reach Canton DevNet endpoints
+- Preloaded with the validator repo and Docker setup, so you can run a validator quickly
+- A stable shared environment, so you do not have to debug local machine networking, VPNs, or firewall rules
+
+If you try to run from a random laptop IP, it will usually fail because that IP is not whitelisted.
 
 **Step 1: Use Canton DevNet**
 
@@ -17,6 +26,8 @@ To access Canton DevNet during the hackathon, follow these steps:
 - Devnet3: 35.193.163.216 
 - DevNet4: 34.57.100.252
 - Devnet5: 136.112.241.18
+
+**IP Passwords:**
 
 dev1 → CantonDev1!
 
@@ -46,11 +57,11 @@ export IMAGE_TAG=0.5.10
 COMPOSE_PROJECT_NAME=splice_dev<NUMBER> docker compose up -d
 ```
 
-**Note**: 
+**Note**: On DevNet, you can obtain an onboarding secret automatically by calling the following endpoint:
 
-- Generate ONBOARDING_SECRET from https://docs.sync.global/validator_operator/validator_compose.html#required-network-parameters 
+`curl -X POST https://sv.sv-1.dev.global.canton.network.sync.global/api/sv/v0/devnet/onboard/validator/prepare \ -H "Content-Type: application/json" \ -d '{}' `
 
-- for `SPONSOR_SV_URL` use https://scan.sv-1.dev.global.canton.network.sync.global
+Now you have the secret and can join the network!
 
 **Step 2: Verify Connection**
 
