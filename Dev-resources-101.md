@@ -6,19 +6,27 @@ This guide provides everything you need to build privacy-focused applications on
 
 ### 1. DevNet Access Setup
 
+##### Why SSH into DevNet?
+
+During the hackathon, each team is given access to a preconfigured Canton environment.
+
+You SSH into DevNet because the DevNet machines are already:
+1. Whitelisted by the Super Validators, so they can reach Canton DevNet endpoints
+2. Preloaded with the validator repo and Docker setup, so you can run a validator quickly
+3. A stable shared environment, so you do not have to debug local machine networking, VPNs, or firewall rules
+
+If you try to run from a random laptop IP, it will usually fail because that IP is not whitelisted.
+
+
 To access Canton DevNet during the hackathon, follow these steps:
 
-**Step 1: Install OpenVPN**
-- Open your favorite terminal
-- Enter the connection information that was emailed to you
+**Step 1: Use Canton DevNet**
 
-**Step 2: Verify Connection**
-```bash
-curl https://ifconfig.me
-```
-If it returns an IP address used to SSH, you are connected correctly.
+We have 5 Virtual Machines that are whitelisted and able to use. Each of these VMs has 10 users. 
 
-**Step 3: Use Canton DevNet**
+If you have any problems with the VM and need an upgrade (more memory, storage) please let us know.
+
+To connect to the VM via ssh open your local terminal and type in the below:
 
 `ssh dev<NUMBER>@<IP>`
 
@@ -27,6 +35,8 @@ If it returns an IP address used to SSH, you are connected correctly.
 - Devnet3: 35.193.163.216 
 - DevNet4: 34.57.100.252
 - Devnet5: 136.112.241.18
+
+Each user has the following password pattern:
 
 dev1 → CantonDev1!
 
@@ -49,15 +59,34 @@ dev9 → CantonDev9!
 dev10 → CantonDev10!
 
 Once connected to the VPN:
+
+
+**Step 2: Verify Connection**
+```bash
+curl https://ifconfig.me
+```
+If it returns an IP address used to SSH, you are connected correctly.
+
+**Step 3: [Get Secret](https://docs.sync.global/validator_operator/validator_compose.html#:~:text=sync.global.-,ONBOARDING_SECRET,-The%20onboarding%20secret)**
+
 ```bash
 cd ~/splice-node/docker-compose/validator
-COMPOSE_PROJECT_NAME=splice_dev1 docker compose up -d
 ```
+
+On DevNet, you can obtain an onboarding secret automatically by calling the following endpoint:
+
+```bash
+curl -X POST https://sv.sv-1.dev.global.canton.network.sync.global/api/sv/v0/devnet/onboard/validator/prepare \
+     -H "Content-Type: application/json" \
+     -d '{}'
+```
+
+Now you have the secret and can join the network!
+
 
 ### 2. Essential Resources
 
 - **Canton 101 Overview**: [canton-101.vercel.app](https://canton-101.vercel.app) for Network architecture, APIs, SDKs, and core concepts:![Community](https://img.shields.io/badge/Community-D5A5E3)
-
 
 - **Official Documentation**: [https://docs.canton.network](https://docs.canton.network/) (*Password: ethdenver*)
 
