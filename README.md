@@ -13,16 +13,6 @@ Complete technical guide covering:
 - SDKs and API documentation
 - Community support channels
 
-**This file is continuously updated with the latest tools and resources.**
-
-### [ETH Denver Bounty](./ETH-Denver-Hackathon.md)
-- Prize pools and track descriptions
-- Submission requirements and judging criteria
-- Example use cases and project ideas
-- Important deadlines
-
-**Note**: Bounty files are hackathon-specific and will be updated for each event, CURRENTLY it has info on ETH Denver.
-
 ## What is Canton Network?
 
 Canton Network is a **privacy-enabled blockchain platform** designed for institutional and enterprise use cases where privacy is critical. Unlike traditional public blockchains where all transactions are visible to everyone, Canton enables:
