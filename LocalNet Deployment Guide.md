@@ -6,33 +6,31 @@ You showed up at a hackathon (or a bootcamp). You've written some Daml, built yo
 
 > **What you'll walk away with?** 
 
-Your Daml contracts running on a full local Canton Network on your laptop — with real wallets, real Canton Coin (test), and real multi-party transactions. No DevNet whitelisting. No waiting 10 days. No cloud costs.
+Your Daml contracts running on a Canton LocalNet with real wallets, Canton Coin (test), and multi-party transactions. No DevNet whitelisting. No waiting 10 days. No Cloud Costs to Start Building.
 
 > **Platform:** macOS and Linux only. Windows users can use WSL 2 for the same.
 
 ## Before We Start: What Even Is This Thing?
 
-Let's cut through the jargon real quick, because Canton has a lot of words for things.
+Let's cut through the jargon real quick.
 
-**Canton LocalNet** is a full Canton Network running in Docker on your laptop. Not a simulation. Not a trimmed-down sandbox. An actual Canton Network with validators, a synchronizer, wallets, Canton Coin — the whole stack. It's built into the `cn-quickstart` repository from Digital Asset and it's what you're going to use.
+- **Canton LocalNet** is a full Canton Local Network running in Docker. Not a simulation. Not a trimmed down sandbox. An actual Canton Network with validators, a synchronizer, wallets, Canton Coin. It's built into the `cn-quickstart` repository from Digital Asset and it's what you're going to use.
 
-**cn-quickstart** is the GitHub repo that gives you LocalNet plus a reference licensing app built on top of it. You're going to clone it, gut the reference app parts you don't need, and plug your Daml project in instead.
+- **cn-quickstart** is the GitHub repo that gives you LocalNet plus a reference licensing app built on top of it. You're going to clone it, gut the reference app parts you don't need, and we gonna plug your Daml project in instead.
 
-Here's the mental model — three roles you need to understand:
+Here's the mental model of three roles you need to understand:
 
 | What | What It Actually Is | Why You Care |
 |------|---------------------|--------------|
-| **Synchronizer** | The Canton "network layer" i.e sequences and orders transactions | It's running in LocalNet already. Don't touch it. |
-| **Validator** | Runs a participant node + wallet for one organization | LocalNet gives you 3 of them out of the box |
-| **Party** | A named identity on the ledger (like an account) | Your Daml contracts are between parties, not validators |
+| **Synchronizer** | sequences and orders transactions | It's running in LocalNet already. |
+| **Validator** | Runs a participant node + wallet for one. | LocalNet gives you 3 Participants |
+| **Party** | A named identity on the ledger (like an address) | Your Daml contracts are between parties |
 
-LocalNet gives you three validators: `app-provider`, `app-user`, and `sv` (Super Validator). Think of `app-provider` as your app/company and `app-user` as a customer. The `sv` runs the payment infrastructure. For most hackathon projects, you'll deploy your DAR to `app-provider` and have parties on both `app-provider` and `app-user` interact with your contracts.
+LocalNet gives you three validators: `app-provider`, `app-user`, and `sv` (Super Validator). Think of `app-provider` as your app/company and `app-user` as a customer. The `sv` runs the infrastructure. For most hackathon projects, you'll deploy your DAR to `app-provider` and have parties on both `app-provider` and `app-user` interact with your contracts as a multi-party workflow.
 
 **What about Keycloak?** 
 
-Keycloak is the authentication/OAuth2 service in the stack. 
-
-Short answer: **enable it during setup** (`make setup` will ask). It's required if you want to use the wallet UI and do Canton Coin transfers. Without it things get complicated. Just say yes and move on.
+Keycloak is the authentication/OAuth2 layer in the stack. **Enable it during setup** (`make setup` will ask). It's required if you want to use the wallet UI and do Canton Coin transfers. Without it things get complicated. Just say **yes** and move on.
 
 ## Prerequisites Checklist
 
@@ -41,11 +39,9 @@ Before you do anything else, check these off:
 - [ ] **Docker Desktop** installed and running (`docker info` returns something, not an error)
 - [ ] Docker Desktop has **at least 8 GB of memory** allocated (Docker Desktop > Settings > Resources > Memory)
 - [ ] **Git** installed
-- [ ] **`curl`** installed (it's on your Mac by default; Linux: `sudo apt install curl`)
-- [ ] **`jq`** installed as you'll need this for parsing API responses (`brew install jq` on Mac, `sudo apt install jq` on Linux)
-- [ ] **`dpm`** installed and in your PATH, you need this because you're building your Daml project with it
-- [ ] **Your Daml project** — you should have a `daml.yaml` and your `.daml` source files ready
-- [ ] Docker Hub account (free) you need to be logged in: `docker login`
+- [ ] **`dpm`** installed and in your PATH, you need this because you're building your Project.
+- [ ] **Your Daml project** should have a `daml.yaml` and your `.daml` source files ready.
+- [ ] Docker Hub account (free) you need to be logged in `docker login`
 
 > **Check your dpm PATH:** 
 
@@ -80,14 +76,14 @@ make setup
 
 You'll get a few prompts. Here's exactly what to answer:
 
-| Prompt | Answer | Why |
-|--------|--------|-----|
-| Enable Observability? | **n** | Grafana/Prometheus stack — cool but eats memory you don't have |
-| Enable OAuth2? | **y** | You need this for the wallet UI and CC transfers |
-| Party hint | **just press Enter** | Uses the default; fine for hackathons |
-| Enable TEST MODE? | **n** | Test mode changes auth behavior; keep it off |
+| Prompt | Answer |
+|--------|--------|
+| Enable Observability? | **n** |
+| Enable OAuth2? | **y** |
+| Party hint | **just press Enter** |
+| Enable TEST MODE? | **n** |
 
-When it finishes, it writes a `.env.local` file. Done. You can re run `make setup` anytime to change these.
+When it finishes, it writes a `.env.local` file. Done. You can re run `make setup` anytime to change these, IF Needed.
 
 ## Step 3: Add Your Daml Project to the Quickstart
 
@@ -97,7 +93,7 @@ This is the part nobody explains. Here's how to get your contracts into LocalNet
 
 The quickstart's Daml code lives in `quickstart/daml/licensing/`. That's the reference licensing app. You have two options:
 
-**Option A — Add alongside the existing app (recommended for hackathons)**
+**Option A: Add alongside the existing app (recommended for hackathons)**
 
 Create a new directory for your project inside `daml/`:
 
@@ -113,22 +109,23 @@ quickstart/
 
 This is cleaner. You keep the existing reference app intact (useful for reference), and add your own as a separate package.
 
-**Option B — Replace the existing app**
+**Option B: Replace the existing app**
 
-If you want to start fresh: delete the contents of `daml/licensing/` and drop your project files there. Update the paths accordingly in the steps below. Only do this if you're confident you won't need the reference app for anything.
+If you want to start fresh, delete the contents of `daml/licensing/` and drop your project files there. Update the paths accordingly in the steps below. Only do this if you're confident you won't need the reference app for anything.
 
 ### 3b. Set up your `daml.yaml`
 
 Your project needs a `daml.yaml`. If you built it with `dpm`, you already have one. Make sure the SDK version in your `daml.yaml` matches what the quickstart uses.
 
 Check the quickstart's SDK version:
+
 ```bash
 cat .env | grep DAML_SDK_VERSION
 ```
 
 Now check your `daml.yaml`:
 ```yaml
-sdk-version: 3.x.x   # ← this should match what you just found
+sdk-version: 3.x.x   # this should match what you just found
 ```
 
 If they don't match, update your `daml.yaml` to use the quickstart's SDK version.
@@ -140,7 +137,7 @@ The quickstart uses a `multi-package.yaml` to build all Daml packages together. 
 ```yaml
 packages:
   - licensing       # existing reference app
-  - your-project    # ← add this line (relative to the daml/ directory)
+  - your-project    # add this line (relative to the daml/ directory)
 ```
 
 ### 3d. Build everything
@@ -155,7 +152,7 @@ This compiles all Daml packages (including yours) into `.dar` files, generates J
 quickstart/daml/your-project/.daml/dist/your-project-<version>.dar
 ```
 
-> **Build errors?** 99% of the time it's an SDK version mismatch or a missing dependency in your `daml.yaml`. Double-check both. If your project depends on Splice DARs (Canton Coin interfaces etc.), check `daml/dars/` — the quickstart bundles them there.
+> **Build errors?** 99% of the time it's an SDK version mismatch or a missing dependency in your `daml.yaml`. Double-check both. If your project depends on Splice DARs (Canton Coin interfaces etc.), check `daml/dars/` the quickstart bundles them there.
 
 ## Step 4: Start LocalNet
 
@@ -194,12 +191,13 @@ export PROVIDER_ADMIN_TOKEN=$(curl -fsS \
 echo $PROVIDER_ADMIN_TOKEN   # should print a long JWT string, not empty
 ```
 
-> **Token expired?** Tokens expire after a while. Just re-run this command to get a fresh one. If you get `Cannot iterate over null` from jq, Keycloak might still be starting, wait a minute and retry.
+> **Token expired?** Tokens expire after a while. Just re run this command to get a fresh one. If you get `Cannot iterate over null` from jq, Keycloak might still be starting, wait a minute and retry.
 
 ### 5b. Upload your DAR
 
 ```bash
 # Replace the path with your actual DAR file path
+
 curl -X POST http://localhost:3975/v2/packages \
   -H "Authorization: Bearer $PROVIDER_ADMIN_TOKEN" \
   -H "Content-Type: application/octet-stream" \
@@ -208,7 +206,7 @@ curl -X POST http://localhost:3975/v2/packages \
 
 A `{}` response means success. Your contracts are now deployed on the App Provider's participant node.
 
-If your contracts involve multiple parties across both the App Provider and App User validators, upload to the App User node too:
+**IF your contracts involve multiple parties across both the App Provider and App User validators, upload to the App User node too:**
 
 ```bash
 export USER_ADMIN_TOKEN=$(curl -fsS \
@@ -256,7 +254,9 @@ APP_PROVIDER_PARTY=$(curl -s -H "Authorization: Bearer $PROVIDER_ADMIN_TOKEN" \
   http://localhost:3975/v2/parties | \
   jq -r '.partyDetails[] | select(.party | startswith("app_provider_quickstart-")) | .party')
 echo "Provider: $APP_PROVIDER_PARTY"
+```
 
+```bash
 # App User party
 APP_USER_PARTY=$(curl -s -H "Authorization: Bearer $USER_ADMIN_TOKEN" \
   http://localhost:2975/v2/parties | \
@@ -268,7 +268,7 @@ You'll get back something like `app_provider_quickstart-1::122045abc...`. That f
 
 ## Step 7: Create a Contract
 
-Now the fun part. Let's create a contract on LocalNet via the JSON Ledger API.
+Now the fun part lol...Let's create a contract on LocalNet via the JSON Ledger API.
 
 This example assumes you have a template like:
 
@@ -283,7 +283,7 @@ template MyContract
     observer user
 ```
 
-Create it:
+**Create it:**
 
 ```bash
 curl -X POST http://localhost:3975/v2/commands/submit-and-wait \
@@ -305,15 +305,13 @@ curl -X POST http://localhost:3975/v2/commands/submit-and-wait \
   }"
 ```
 
-A response containing a `transaction_id` means your contract was created. It's live on LocalNet. 🎉
+A response containing a `transaction_id` means your contract was created. It's live on LocalNet YAYAY 🎉
 
 > **Template ID format:** `<packageId>:<ModuleName>:<TemplateName>` note the colons, not dots.
 
----
-
 ## Step 8: Tap Some Canton Coin and Test Transfers
 
-LocalNet has full wallet functionality. On LocalNet, CC is available automatically, no faucet needed.
+LocalNet has full wallet functionality. On LocalNet, CC is available automatically via Wallet UI Tap option.
 
 ### Open the wallet UIs
 
@@ -337,7 +335,7 @@ In the App User wallet:
 3. Enter an amount
 4. Confirm
 
-You'll see the transfer show up in both wallets. This is real Canton Coin mechanics — privacy preserving transfers between parties on separate validators, mediated by the synchronizer.
+You'll see the transfer show up in both wallets. This is real Canton Coin mechanics of privacy preserving transfers between parties on separate validators, mediated by the local synchronizer.
 
 ## Step 9: Interact via Daml Shell
 
@@ -376,37 +374,42 @@ Bookmark this. You'll refer to it constantly:
 | App User JSON API | `localhost:2975` | Submit commands, query as App User |
 | App Provider JSON API | `localhost:3975` | Submit commands, query as App Provider |
 | SV JSON API | `localhost:4975` | Super Validator (rarely needed directly) |
-| App User Ledger API (gRPC) | `localhost:2901` | Lower-level gRPC access |
-| App Provider Ledger API (gRPC) | `localhost:3901` | Lower-level gRPC access |
+| App User Ledger API (gRPC) | `localhost:2901` | Lower level gRPC access |
+| App Provider Ledger API (gRPC) | `localhost:3901` | Lower level gRPC access |
 | App User Wallet UI | `wallet.localhost:2000` | Wallet for App User |
 | App Provider Wallet UI | `wallet.localhost:3000` | Wallet for App Provider |
 | Scan UI | `scan.localhost:4000` | Network transaction explorer |
-| Keycloak | `keycloak.localhost:8082` | Auth server (usually not hit directly) |
+| Keycloak | `keycloak.localhost:8082` | Auth server |
 
 ## Common Issues
 
-**"Container failed to start"**
+- **"Container failed to start"**
+
 Almost always a memory issue. Check Docker Desktop memory allocation. 8 GB minimum, 12 GB if you can spare it.
 
-**"401 Unauthorized" on API calls**
-Your token expired. Re run the token export commands from Step 6a.
+- **"401 Unauthorized" on API calls**
 
-**"Empty reply from server" on DAR upload**
+Your token expired. Re run the token export commands from Step 5a.
+
+- **"Empty reply from server" on DAR upload**
+
 Network issue or the participant isn't ready yet. Wait 30 seconds and retry.
 
-**"409 Conflict" on DAR upload**
+- **"409 Conflict" on DAR upload**
+
 You already uploaded that DAR. That's fine it's idempotent, the package is already there.
 
-**Wallet UI shows blank / can't log in**
+- **Wallet UI shows blank / can't log in**
+
 Keycloak might still be starting. Wait a minute and refresh. If it persists `make stop && make clean-all && make start`.
 
-**`make build` fails with "SDK version mismatch"**
+- **`make build` fails with "SDK version mismatch"**
+
 Your `daml.yaml` SDK version doesn't match the quickstart's. Update your `daml.yaml` to match `DAML_SDK_VERSION` in the quickstart's `.env` file.
 
 ## Quick Reference: The Commands You'll Use Most
 
 ```bash
-
 make install-daml-sdk    # Install the pinned Daml SDK
 make setup               # Configure LocalNet
 make build               # Compile everything (Daml + backend + frontend)
@@ -419,4 +422,4 @@ make shell               # Open Daml Shell (contract REPL)
 make help                # See all available cmd options.
 ```
 
-*Built for hackathons and bootcamps. If something in this guide is wrong or outdated, open an issue or Make a PR, this is a living document.*
+*Built for Devs. If something in this guide is wrong or outdated, Open an issue or Make a PR, Guide made by [Jatin](https://x.com/Jpandya26), Developer Relations Manager, Canton Foundation.*
