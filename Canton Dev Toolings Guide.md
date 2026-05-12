@@ -2,17 +2,21 @@
 
 A curated catalogue of tools, SDKs, APIs, and infrastructure available for building on Canton Network. Each entry includes what it does, who makes it, and where to find it.
 
+> ***Disclaimer**: The tools, libraries, and resources labeled as 'Community' in this repository are submitted by third-party developers and ecosystem partners. They are not audited, endorsed, officially maintained, or guaranteed by the Canton Foundation. These resources are provided 'as is' for informational listing purpose only.*
+> 
+> *The Foundation assumes no liability for any security vulnerabilities, bugs, financial loss, or damages resulting from the use of these tools. Developers must do their own research and independently review the code and security of any third-party/Partner tools before integrating them into their projects.*
+
 ## Getting Started with BuidL
 
 ### Official Canton Network Documentation
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** The authoritative technical documentation for Canton Network. Covers the Ledger API, Daml language, participant node setup, Canton Coin, Splice APIs, and more.
 
 **Link:** [docs.canton.network](https://docs.canton.network)
 
 ### Canton Network API Overview
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** A TL;DR overview of all the APIs available for building on Canton: Ledger API, JSON API, Admin API, Scan API, Validator API, and Wallet API. Start here to understand which API you need for what.
 
@@ -27,7 +31,7 @@ A curated catalogue of tools, SDKs, APIs, and infrastructure available for build
 
 
 ### DPM (Digital Asset Package Manager)
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** The primary CLI tool for Canton/Daml development. `dpm` handles everything: initializing projects, building DARs, running tests, code generation (TypeScript and Java bindings), managing SDK versions, and running a local sandbox. If you're building a Daml project, you're using `dpm`.
 
@@ -47,7 +51,7 @@ dpm studio        # open project in VS Code with Daml extension
 - **Docs:** [docs.digitalasset.com/build/3.4/dpm](https://docs.digitalasset.com/build/3.4/dpm/)
 
 ### Daml Studio (VS Code Extension)
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** The VS Code extension for Daml development. Gives you syntax highlighting, type checking, inline error diagnostics, and code navigation directly in your editor. Installed automatically when you install DPM. Launch it with `dpm studio` from your project directory.
 
@@ -84,7 +88,7 @@ dpm studio        # open project in VS Code with Daml extension
 **Link:** [tenzro.com/docs/canton](https://www.tenzro.com/docs/canton)
 
 ### Canton Dev MCP Server
-![Community](https://img.shields.io/badge/Community-Canton_Partner-D5A5E3)
+![Official](https://img.shields.io/badge/Official-Canton_DevRel-blue)
 
 **What it is:** A Model Context Protocol (MCP) server that plugs Canton's knowledge base directly into Claude (and other MCP compatible AI tools). Instead of AI hallucinating outdated Canton docs, the MCP server grounds responses in current, accurate Canton documentation covering the full dev stack from Daml to Ledger API to LocalNet. Especially useful at hackathons where you're using Claude to help write code.
 
@@ -95,7 +99,7 @@ dpm studio        # open project in VS Code with Daml extension
 ## Local Development Environments
 
 ### Canton LocalNet (via cn-quickstart)
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** A full Canton Network running locally in Docker Compose. Three validators (App Provider, App User, Super Validator), a local synchronizer, Canton Coin wallets, PQS, Keycloak auth, and Scan UI, all on your system. The go to environment for development and testing without needing DevNet access.
 
@@ -107,7 +111,7 @@ dpm studio        # open project in VS Code with Daml extension
 
 
 ### Canton Sandbox (via DPM)
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** A lightweight single node Canton environment for fast iteration on contract logic. No Docker required. Starts instantly. Good for unit-testing your Daml before you need the full LocalNet stack.
 
@@ -146,33 +150,33 @@ dpm sandbox
 ## APIs
 
 ### JSON Ledger API
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** An HTTP/JSON interface to the Canton Ledger API. Submit commands (create contracts, exercise choices), query active contracts, and stream events all over standard HTTP. The easiest way to integrate a backend or test scripts with Canton without setting up gRPC.
 
 **Docs:** [docs.digitalasset.com/build/3.4/quickstart/operate/json-api.html](https://docs.digitalasset.com/build/3.4/quickstart/operate/json-api.html)
 
 ### gRPC Ledger API
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** The full Ledger API over gRPC/Protobuf. More powerful and higher-performance than the JSON API. Required for production backends and streaming event subscriptions. Use code generation (`dpm codegen-java` or `dpm codegen-js`) to get typed client bindings.
 
 ### Scan API
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** A read-only API for querying network level Canton data, mining rounds, Canton Coin supply, featured apps, and DSO governance state. Think of it as a public read API for the Global Synchronizer.
 
 **Docs:** [docs.sync.global](https://docs.sync.global)
 
 ### Validator API
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** REST APIs exposed by each validator node for wallet operations, traffic management, party onboarding, and Canton Coin transfers. This is what the wallet UIs talk to under the hood.
 
 ## Data Explorer & Indexing
 
 ### PQS (Participant Query Store)
-![Official](https://img.shields.io/badge/Official-Digital_Asset_/_Foundation-blue)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** A PostgreSQL-backed query store that mirrors your participant's ledger state and lets you run SQL queries against it. Essential for any app that needs complex queries, aggregations, or reporting on contract data. LocalNet includes PQS instances for both App Provider and App User out of the box.
 
@@ -198,18 +202,25 @@ dpm sandbox
 ## Wallet Integration
 
 ### Canton Wallets
-![Community](https://img.shields.io/badge/Community-Canton_Partner-D5A5E3)
+![Official](https://img.shields.io/badge/Official-Canton_Network-blue)
 
 **What it is:** A growing ecosystem of wallets, retail, enterprise, self custody, and custodial that support Canton Network assets and Canton Coin. If your app needs users to hold or transfer CC or other Canton assets, your users will interact through one of these.
 
 **Full list:** [cantonecosystem.com](https://www.cantonecosystem.com/)
 
 ### Wallet <> dApp Development Kit (Wallet Gateway)
-![Community](https://img.shields.io/badge/Community-Canton_Partner-D5A5E3)
+![Official](https://img.shields.io/badge/Official-Digital_Asset-blue)
 
 **What it is:** An opensource SDK for building dApps that integrate with Canton wallets. Includes the dApp API spec (OpenRPC) and a dApp SDK for connecting your frontend to Canton wallet functionality.
 
 **Repo:** [github.com/canton-network/wallet-gateway](https://github.com/canton-network/wallet-gateway/tree/main)  
+
+### WalletConnect Integration for Canton
+![Community](https://img.shields.io/badge/Community-Canton_Partner-D5A5E3)
+
+**What it is:** WalletConnect integration for Canton Network, connect your dApp to any WalletConnect-compatible wallet that supports Canton.
+
+**docs:** [docs.walletconnect.network](https://docs.walletconnect.network/wallet-sdk/chain-support/canton)
 
 ### Console dApp SDK by PixelPlex
 ![Community](https://img.shields.io/badge/Community-Canton_Partner-D5A5E3)
