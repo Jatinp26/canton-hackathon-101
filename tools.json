@@ -326,7 +326,7 @@
     "maintained_by": "CantonLoop"
   },
   {
-    "name": "Canton Wallets",
+    "name": "Find Canton Wallets",
     "maker": "Canton Ecosystem",
     "type": "partner",
     "category": "Wallet Integration",
@@ -336,6 +336,18 @@
     ],
     "daml_sdk_version": null,
     "maintained_by": "Canton Ecosystem"
+  },
+  {
+    "name": "WalletConnect",
+    "maker": "WalletConnect",
+    "type": "partner",
+    "category": "Wallet Integration",
+    "desc": "WalletConnect integration for Canton Network, connect your dApp to any WalletConnect-compatible wallet that supports Canton.",
+    "links": [
+      { "label": "docs", "url": "https://docs.walletconnect.network/wallet-sdk/chain-support/canton" }
+    ],
+    "daml_sdk_version": null,
+    "maintained_by": "WalletConnect"
   },
   {
     "name": "Console dApp SDK",
