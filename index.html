@@ -48,7 +48,29 @@
   }
   .logo { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: var(--white); }
   .logo-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--yellow); }
-  .header-tag { font-size: 11px; color: var(--taupe); letter-spacing: 0.06em; text-transform: uppercase; }
+.header-tag { font-size: 11px; color: var(--taupe); letter-spacing: 0.06em; text-transform: uppercase; }
+.header-actions { display: flex; gap: 8px; align-items: center; }
+.header-btn {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12px; font-weight: 400;
+  padding: 6px 14px; border-radius: 100px;
+  text-decoration: none; white-space: nowrap;
+  transition: all 0.15s;
+}
+.header-btn.outline {
+  border: 1px solid rgba(255,255,252,0.2);
+  color: var(--white);
+  background: transparent;
+}
+.header-btn.outline:hover { border-color: rgba(255,255,252,0.5); }
+.header-btn.filled {
+  border: 1px solid var(--yellow);
+  background: var(--yellow);
+  color: var(--black);
+  font-weight: 500;
+}
+.header-btn.filled:hover { background: #e8f080; border-color: #e8f080; }
+@media (max-width: 600px) { .header-btn.outline { display: none; } }
 
   .hero { background: var(--black); padding: 3.5rem 2rem 3rem; border-bottom: 1px solid rgba(255,255,252,0.08); }
   .hero-inner { max-width: 960px; margin: 0 auto; }
@@ -154,7 +176,18 @@
   <div class="logo">
     Canton Network
   </div>
-  <span class="header-tag">Developer Hub</span>
+<div class="header-actions">
+    <a class="header-btn outline"
+       href="https://github.com/Jatinp26/Canton-Developer-Hub/issues/new?assignees=&labels=bad+tool+report&template=&title=%5BBad+Tool+Report%5D+Tool+Name+Here&body=%23%23+Tool+Report%0A%0A**Tool+name:**%20%0A**Issue:**%20%0A**Link+to+tool:**%20%0A**Additional+context:**%20"
+       target="_blank" rel="noopener">
+      Report a tool
+    </a>
+    <a class="header-btn filled"
+       href="https://github.com/Jatinp26/Canton-Developer-Hub/blob/main/CONTRIBUTING.md"
+       target="_blank" rel="noopener">
+      Add your tool
+    </a>
+  </div>
 </header>
 
 <section class="hero">
