@@ -7,7 +7,7 @@ Not sure where to start? Here's something help:
  
 | Where you are | What to use |
 |---|---|
-| "I have a .DAR file built of my Daml Contracts using `dpm`, I need a Canton LocalNet right now to deploy and show my project demo" | **Canton Devrel Tool** |
+| "I have a .DAR file built of my Daml Contracts using `dpm`, I need a Canton LocalNet right now to deploy and show my project demo" | **Canton Builder Tool** |
 | "I want to understand LocalNet along with a sample backend, frontend, keyclock, use PQS to Index, etc" | **cn_quickstart LocalNet Deployment Guide** |
 | "I want to build a same fullstack Canton dApp first with backend, auth, frontend to learn" | **[cn-quickstart](https://github.com/digital-asset/cn-quickstart)**
  
@@ -32,18 +32,18 @@ A structured catalogue and guide of Tools, SDKs, APIs, and Pieces of infrastruct
 
 Each tool is tagged as **Official** (Digital Asset OR Canton Foundation) or **Community** (Canton Ecosystem Partners) so you know what you're working with.
 
-### [Canton DevRel Tool: Easy LocalNet Setup](https://github.com/Jatinp26/Canton-DevRel-Tool)
+### [Canton Builder Tool: Easy LocalNet Setup](https://github.com/Jatinp26/Canton-Builder-Tool)
 The fastest way to get a full Canton Network running on your laptop. One command, no setup, no Makefile, no DevNet whitelisting.
  
 ```bash
 # Install
-curl -fsSL https://raw.githubusercontent.com/Jatinp26/Canton-DevRel-Tool/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Jatinp26/Canton-Builder-Tool/main/install.sh | bash
  
 # Start a full Canton Network locally
-canton devrel start
+canton builder start
  
 # Deploy your DAR
-canton devrel deploy ./your-project.dar
+canton builder deploy ./your-project.dar
 ```
  
 This Gets you 3 validators, local synchronizer, Canton Coin wallets, Scan UI and other useful full official Splice Canton LocalNet stack. Built for hackathon builders who just need a network to deploy it on.
@@ -79,13 +79,13 @@ Key properties:
 
 ## Quick Start for Hackathon Builders
 
-Done Coding your Daml contracts and a `.dar` file via `dpm` ? Go straight to either The **[Canton DevRel Tool](https://github.com/Jatinp26/Canton-DevRel-Tool)** or **[LocalNet Deployment Guide](./LocalNet%20Deployment%20Guide.md)**.
+Done Coding your Daml contracts and a `.dar` file via `dpm` ? Go straight to either The **[Canton Builder Tool](https://github.com/Jatinp26/Canton-DevRel-Tool)** or **[cn_quickstart LocalNet Deployment Guide](./LocalNet%20Deployment%20Guide.md)**.
 
 Starting from scratch?
 
 1. Install DPM: [docs.digitalasset.com/build/3.4/dpm](https://docs.digitalasset.com/build/3.4/dpm/)
 2. Scaffold a project: `dpm new <PROJECT NAME> --template empty-skeleton`
 3. Write your Daml contracts, build with `dpm build` and test with `dpm test`
-4. Use **[Canton DevRel Tool](https://github.com/Jatinp26/Canton-DevRel-Tool)** or Follow the **[cn_quickstart LocalNet Deployment Guide](./cn_quickstart%20LocalNet%20Deployment%20Setup%20Guide.md)** to deploy
+4. Use **[Canton Builder Tool](https://github.com/Jatinp26/Canton-DevRel-Tool)** or Follow the **[cn_quickstart LocalNet Deployment Guide](./cn_quickstart%20LocalNet%20Deployment%20Setup%20Guide.md)** to deploy
 
 > *Maintained by [Jatin Pandya]((https://x.com/Jpandya26)), Developer Relations Manager, Canton Foundation.*
